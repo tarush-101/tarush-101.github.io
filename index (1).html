@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarush Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --ink-light: #555555;
+    --ink-faint: #999999;
+    --paper: #FAFAF8;
+    --accent: #1B4F8A;
+    --accent-light: #E8EFF8;
+    --rule: #E5E5E0;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .hero-inner { max-width: 780px; }
+
+  .hero-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-light);
+    background: white;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #163f70; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+  }
+  .btn-outline:hover { border-color: var(--ink); }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1100px; margin: 0 auto;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--ink-light);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  .about-right { }
+
+  .skills-block { margin-bottom: 2rem; }
+
+  .skills-block h4 {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+  }
+
+  .skills-list {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-size: 0.78rem;
+    font-weight: 400;
+    padding: 0.3rem 0.75rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* PROJECTS */
+  .project-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .project-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .project-badge {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-live { background: #E8F5EE; color: #1A7A4A; }
+  .badge-review { background: #FFF4E0; color: #9A6200; }
+
+  .project-sub {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .project-desc {
+    color: var(--ink-light);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-stack {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stack-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-light);
+  }
+
+  .project-bullets {
+    list-style: none;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+
+  .project-bullets li {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    padding: 0.4rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .project-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-meta { }
+
+  .exp-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-company {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-location {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .exp-points {
+    list-style: none;
+  }
+
+  .exp-points li {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .exp-points li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .cert-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+
+  .cert-issuer {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .cert-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+
+  .cert-date {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-text p {
+    color: var(--ink-light);
+    font-size: 0.95rem;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-links { list-style: none; }
+
+  .contact-links li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .contact-links li:last-child { border-bottom: none; }
+
+  .contact-links .cl-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .contact-links a {
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover { color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Tarush Sharma</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Analytics · Consulting · Technology</p>
+    <h1 class="hero-name">Tarush<br><em>Sharma</em></h1>
+    <p class="hero-bio">PGDM from IMI Bhubaneswar. I work at the intersection of data, technology, and client-facing consulting — translating complex problems into working solutions.</p>
+    <div class="hero-tags">
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">SAP S/4HANA</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Gaussian Mixture Models</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal">About</p>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2 class="section-title">Analytical by training.<br>Practical by instinct.</h2>
+      <p>I hold a PGDM from IMI Bhubaneswar and bring over a year of experience across analytics, business consulting, and client-facing roles. I am formally certified in SAP S/4HANA through the SAP University Alliances programme.</p>
+      <p>My work spans building ML pipelines, designing dashboards, conducting consumer research, and delivering measurable outcomes in client-facing settings — from generating ₹1,00,000+ in revenue to improving campaign response rates by 30%.</p>
+      <p>I co-developed Moodify, a full-stack music intelligence application, and authored an NLP research paper currently under peer review — both rooted in the same discipline: rigorous thinking applied to real problems.</p>
+    </div>
+    <div class="about-right reveal">
+      <div class="skills-block">
+        <h4>Programming & Data</h4>
+        <div class="skills-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">NLP Pipelines</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">Streamlit</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>SAP Ecosystem</h4>
+        <div class="skills-list">
+          <span class="skill-pill">SAP S/4HANA GBI 3.3</span>
+          <span class="skill-pill">SAP ERP</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Analytics & Visualisation</h4>
+        <div class="skills-list">
+          <span class="skill-pill">Power BI</span>
+          <span class="skill-pill">Excel Modelling</span>
+          <span class="skill-pill">Dashboard Design</span>
+          <span class="skill-pill">KPI Tracking</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Consulting & Client Skills</h4>
+        <div class="skills-list">
+          <span class="skill-pill">Requirements Analysis</span>
+          <span class="skill-pill">Solution Design</span>
+          <span class="skill-pill">Salesforce CRM</span>
+          <span class="skill-pill">A/B Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">Projects</p>
+  <h2 class="section-title reveal">Work that demonstrates<br>the thinking.</h2>
+
+  <!-- Moodify -->
+  <div class="project-card reveal" style="margin-top:2.5rem">
+    <div class="project-header">
+      <div>
+        <div class="project-sub">Music Intelligence · Machine Learning · Full-Stack</div>
+        <h3 class="project-name">Moodify</h3>
+      </div>
+      <span class="project-badge badge-live">Collaborative Project</span>
+    </div>
+    <p class="project-desc">A full-stack music intelligence application that ingests a Spotify playlist and clusters tracks by mood using Gaussian Mixture Models with custom emotional feature weighting. Built with a two-phase hybrid LLM correction pipeline and a Streamlit analytics dashboard featuring t-SNE visualisation.</p>
+    <div class="project-stack">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">FastAPI</span>
+      <span class="stack-tag">Streamlit</span>
+      <span class="stack-tag">Gaussian Mixture Model</span>
+      <span class="stack-tag">Spotify API</span>
+      <span class="stack-tag">Gemini LLM</span>
+      <span class="stack-tag">Genius API</span>
+      <span class="stack-tag">t-SNE</span>
+    </div>
+    <ul class="project-bullets">
+      <li>Clusters tracks by mood using GMM with custom weighting across 9 audio dimensions — energy, valence, danceability, BPM, acousticness, and more</li>
+      <li>Mood Transition Journey: a 2D emotional coordinate system (Valence × Energy) using linear interpolation to generate sequenced playlists across emotional states</li>
+      <li>Two-phase LLM pipeline: Phase 1 uses Gemini for fast batch classification; Phase 2 fetches lyrics via Genius API for low-confidence tracks and re-classifies</li>
+      <li>Streamlit dashboard with t-SNE visualisation, mood distribution charts, AI confidence breakdowns, and LLM correction tracking</li>
+      <li>Personal contributions: research design, core ML logic, analytics dashboard, and coding</li>
+    </ul>
+  </div>
+
+  <!-- NLP Research -->
+  <div class="project-card reveal">
+    <div class="project-header">
+      <div>
+        <div class="project-sub">NLP · Consumer Behaviour · Academic Research</div>
+        <h3 class="project-name">Consumer Decision Modeling using NLP & Bibliometrics</h3>
+      </div>
+      <span class="project-badge badge-review">Under Peer Review</span>
+    </div>
+    <p class="project-desc">A research paper applying Structural Topic Modeling and Sentence-BERT embeddings to 2,900+ consumer records to model the EdTech purchase decision pipeline — from technology beliefs to continuance.</p>
+    <div class="project-stack">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">R</span>
+      <span class="stack-tag">Structural Topic Modeling</span>
+      <span class="stack-tag">Sentence-BERT</span>
+      <span class="stack-tag">NLP Pipelines</span>
+      <span class="stack-tag">Bibliometrics</span>
+      <span class="stack-tag">Behavioural Economics</span>
+    </div>
+    <ul class="project-bullets">
+      <li>6-stage consumer decision pipeline: Technology Beliefs → Psychological Activation → Perceived Career ROI → Purchase Intention → Enrollment → Continuance</li>
+      <li>Identified Perceived Career ROI as the primary conversion driver, with Peer Influence and Brand Trust as moderators</li>
+      <li>Applied STM on 2,900+ records and Sentence-BERT embeddings to extract latent behavioural themes</li>
+      <li>Methodology combines bibliometrics, NLP, and behavioural economics — applicable to product strategy and consumer insight roles</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label reveal">Experience</p>
+  <h2 class="section-title reveal">1+ year across<br>consulting & analytics.</h2>
+
+  <div style="margin-top:2.5rem">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Apr 2025 – May 2025</div>
+        <div class="exp-company">Happequity Investments & Finances</div>
+        <div class="exp-location">India</div>
+      </div>
+      <div>
+        <div class="exp-role">Marketing & Business Analyst</div>
+        <ul class="exp-points">
+          <li>Analysed customer requirements across 500+ client interactions — qualifying needs and mapping profiles to suitable configurations</li>
+          <li>Generated ₹1,00,000+ in direct revenue through CRM-integrated outreach campaigns with ICICI and HDFC</li>
+          <li>Drove 35% increase in website traffic through cross-functional social media campaigns</li>
+          <li>Conducted ML-driven consumer research using STM in R to uncover psychological purchase triggers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Dec 2024 – Jan 2025</div>
+        <div class="exp-company">Livspace</div>
+        <div class="exp-location">India</div>
+      </div>
+      <div>
+        <div class="exp-role">Market Research Analyst</div>
+        <ul class="exp-points">
+          <li>Translated consumer data and competitive analysis across 20+ brands into positioning and pricing recommendations</li>
+          <li>Designed and maintained 5+ Power BI dashboards tracking KPIs across sales and marketing verticals</li>
+          <li>Enabled real-time performance monitoring aligned to SLAs through structured dashboard design</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2024 – Nov 2024</div>
+        <div class="exp-company">Suprams Info Solutions</div>
+        <div class="exp-location">India</div>
+      </div>
+      <div>
+        <div class="exp-role">Business Development and Strategy</div>
+        <ul class="exp-points">
+          <li>Analysed data from 1,900+ organisations to identify high-potential lead segments</li>
+          <li>Improved client response rates by 30% through A/B-tested email campaign sequences</li>
+          <li>Led market expansion initiative increasing lead generation by 25%</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Certifications -->
+  <div style="margin-top:4rem">
+    <p class="section-label reveal">Certifications</p>
+    <div class="cert-grid" style="margin-top:1.5rem">
+      <div class="cert-card reveal">
+        <div class="cert-issuer">SAP University Alliances</div>
+        <div class="cert-name">Introduction to ERP on SAP S/4HANA (GBI 3.3)</div>
+        <div class="cert-date">Sep 2025 – Dec 2025 · IMI Bhubaneswar</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">IBM</div>
+        <div class="cert-name">Prompt Engineering & Generative AI</div>
+        <div class="cert-date">2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label reveal">Contact</p>
+  <div class="contact-inner">
+    <div class="contact-text reveal">
+      <h2 class="section-title">Let's talk.</h2>
+      <p>Open to roles in consulting, analytics, and technology. Feel free to reach out for opportunities or collaborations.</p>
+      <a href="mailto:tarushsharmalmp@gmail.com" class="btn btn-primary">Send an Email</a>
+    </div>
+    <div class="reveal">
+      <ul class="contact-links">
+        <li>
+          <span class="cl-label">Email</span>
+          <a href="mailto:tarushsharmalmp@gmail.com">tarushsharmalmp@gmail.com</a>
+        </li>
+        <li>
+          <span class="cl-label">Phone</span>
+          <a href="tel:+919026217524">+91 9026217524</a>
+        </li>
+        <li>
+          <span class="cl-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/tarush-sharma" target="_blank">linkedin.com/in/tarush-sharma</a>
+        </li>
+        <li>
+          <span class="cl-label">Location</span>
+          <span style="font-size:0.9rem;color:var(--ink)">Bangalore, India</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Tarush Sharma &nbsp;·&nbsp; 2026</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
