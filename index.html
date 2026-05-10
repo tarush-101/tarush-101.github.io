@@ -508,7 +508,11 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#volunteering">Volunteering</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/tarush-101" target="_blank">GitHub</a></li>
+    <li><a href="Tarush_Analytics_CV.pdf" download style="color:var(--accent)">Download CV</a></li>
   </ul>
 </nav>
 
@@ -517,7 +521,7 @@
   <div class="hero-inner">
     <p class="hero-label">Analytics · Consulting · Technology</p>
     <h1 class="hero-name">Tarush<br><em>Sharma</em></h1>
-    <p class="hero-bio">PGDM from IMI Bhubaneswar. I work at the intersection of data, technology, and client-facing consulting — translating complex problems into working solutions.</p>
+    <p class="hero-bio">I just completed my PGDM — and spent that time building an ML app, co-authoring a peer-reviewed research paper, and interning across analytics, market research, and business development. I work at the edge of data, technology, and strategy: comfortable writing Python in the morning and presenting to a client in the afternoon. If you're looking for someone who can do both, that's the pitch.</p>
     <div class="hero-tags">
       <span class="tag">Python</span>
       <span class="tag">SQL</span>
@@ -530,6 +534,7 @@
     </div>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="https://github.com/tarush-101" target="_blank" class="btn btn-outline">GitHub ↗</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
     </div>
   </div>
@@ -547,39 +552,58 @@
     </div>
     <div class="about-right reveal">
       <div class="skills-block">
-        <h4>Programming & Data</h4>
+        <h4>Programming</h4>
         <div class="skills-list">
-          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Python (ML, API integration)</span>
           <span class="skill-pill">SQL</span>
           <span class="skill-pill">R</span>
-          <span class="skill-pill">NLP Pipelines</span>
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">Streamlit</span>
         </div>
       </div>
       <div class="skills-block">
-        <h4>SAP Ecosystem</h4>
-        <div class="skills-list">
-          <span class="skill-pill">SAP S/4HANA GBI 3.3</span>
-          <span class="skill-pill">SAP ERP</span>
-        </div>
-      </div>
-      <div class="skills-block">
-        <h4>Analytics & Visualisation</h4>
+        <h4>Analytics & BI</h4>
         <div class="skills-list">
           <span class="skill-pill">Power BI</span>
           <span class="skill-pill">Excel Modelling</span>
-          <span class="skill-pill">Dashboard Design</span>
+          <span class="skill-pill">Statistical Analysis</span>
           <span class="skill-pill">KPI Tracking</span>
+          <span class="skill-pill">Tableau</span>
         </div>
       </div>
       <div class="skills-block">
-        <h4>Consulting & Client Skills</h4>
+        <h4>ML & NLP</h4>
         <div class="skills-list">
-          <span class="skill-pill">Requirements Analysis</span>
-          <span class="skill-pill">Solution Design</span>
-          <span class="skill-pill">Salesforce CRM</span>
+          <span class="skill-pill">Gaussian Mixture Model</span>
+          <span class="skill-pill">Sentence-BERT</span>
+          <span class="skill-pill">Structural Topic Modeling</span>
+          <span class="skill-pill">LLM Integration</span>
           <span class="skill-pill">A/B Testing</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Tools & Platforms</h4>
+        <div class="skills-list">
+          <span class="skill-pill">Spotify API</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">Streamlit</span>
+          <span class="skill-pill">Salesforce CRM</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">Microsoft Office</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Development Environment</h4>
+        <div class="skills-list">
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">Jupyter Notebook</span>
+          <span class="skill-pill">VS Code</span>
+          <span class="skill-pill">Google Colab</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Certifications</h4>
+        <div class="skills-list">
+          <span class="skill-pill">SAP S/4HANA GBI 3.3</span>
+          <span class="skill-pill">Prompt Engineering & GenAI — IBM</span>
         </div>
       </div>
     </div>
@@ -598,7 +622,9 @@
         <div class="project-sub">Music Intelligence · Machine Learning · Full-Stack</div>
         <h3 class="project-name">Moodify</h3>
       </div>
-      <span class="project-badge badge-live">Collaborative Project</span>
+      <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="https://github.com/tarush-101/Moodify" target="_blank" class="btn btn-outline" style="padding:0.35rem 0.9rem;font-size:0.72rem">View on GitHub ↗</a>
+      </div>
     </div>
     <p class="project-desc">A full-stack music intelligence application that ingests a Spotify playlist and clusters tracks by mood using Gaussian Mixture Models with custom emotional feature weighting. Built with a two-phase hybrid LLM correction pipeline and a Streamlit analytics dashboard featuring t-SNE visualisation.</p>
     <div class="project-stack">
@@ -697,9 +723,10 @@
       <div>
         <div class="exp-role">Business Development and Strategy</div>
         <ul class="exp-points">
-          <li>Analysed data from 1,900+ organisations to identify high-potential lead segments</li>
-          <li>Improved client response rates by 30% through A/B-tested email campaign sequences</li>
-          <li>Led market expansion initiative increasing lead generation by 25%</li>
+          <li>Analysed data from 1,900+ organisations using Python and Excel to segment high-potential leads by industry, company size, and engagement signals — directly informing outreach targeting strategy</li>
+          <li>Built and iterated A/B-tested email campaign sequences across 3 variants, improving client response rates by 30% through personalisation, subject line testing, and send-time optimisation</li>
+          <li>Tracked campaign performance via engagement metrics (open rate, click-through, reply rate) and produced weekly performance reports to guide strategy refinement</li>
+          <li>Led market expansion initiative that increased qualified lead generation by 25% through targeted, analytics-backed outreach into new verticals</li>
         </ul>
       </div>
     </div>
@@ -719,6 +746,67 @@
         <div class="cert-issuer">IBM</div>
         <div class="cert-name">Prompt Engineering & Generative AI</div>
         <div class="cert-date">2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NGO / VOLUNTEER -->
+<section id="volunteering">
+  <p class="section-label reveal">Volunteering</p>
+  <h2 class="section-title reveal">Giving back through<br>skills & training.</h2>
+  <div style="margin-top:2.5rem">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Jun 2022 – Dec 2022</div>
+        <div class="exp-company">Indotech Society</div>
+        <div class="exp-location">India</div>
+      </div>
+      <div>
+        <div class="exp-role">Vocational Instructor</div>
+        <ul class="exp-points">
+          <li>Designed and delivered 50+ skills training sessions across vocational disciplines, directly impacting the career trajectories of 200+ beneficiaries</li>
+          <li>Collaborated with industry professionals across 50+ workshops to deliver structured, practical vocational training to underserved learners</li>
+          <li>Increased NGO visibility by 20% through strategic marketing campaigns and community outreach initiatives across digital and offline channels</li>
+          <li>Developed training materials and session plans tailored to learners with varying educational backgrounds, improving engagement and knowledge retention</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label reveal">Education</p>
+  <h2 class="section-title reveal">Academic<br>Background.</h2>
+  <div style="margin-top:2.5rem">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">2024 – 2026</div>
+        <div class="exp-company">IMI Bhubaneswar</div>
+        <div class="exp-location">Bhubaneswar, India</div>
+      </div>
+      <div>
+        <div class="exp-role">PGDM — Post Graduate Diploma in Management</div>
+        <ul class="exp-points">
+          <li>Score: 75.1%</li>
+          <li>Specialisation: Analytics & Marketing</li>
+          <li>Built Moodify and co-authored NLP research paper during programme</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">2019 – 2022</div>
+        <div class="exp-company">National Post Graduate College</div>
+        <div class="exp-location">Lucknow, India</div>
+      </div>
+      <div>
+        <div class="exp-role">B.A. — Economics & Political Science</div>
+        <ul class="exp-points">
+          <li>Score: 68.8%</li>
+          <li>Subjects: Economics, Political Science</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -745,15 +833,15 @@
         </li>
         <li>
           <span class="cl-label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/tarush-sharma-94a955314/" target="_blank">www.linkedin.com/in/tarush-sharma/</a>
+          <a href="https://linkedin.com/in/tarush-sharma-94a955314" target="_blank">linkedin.com/in/tarush-sharma-94a955314/</a>
         </li>
         <li>
-        <span class="cl-label">GitHub</span>
-        <a href="https://github.com/tarush-101" target="_blank">github.com/tarush-101</a>
+          <span class="cl-label">GitHub</span>
+          <a href="https://github.com/tarush-101" target="_blank">github.com/tarush-101</a>
         </li>
         <li>
           <span class="cl-label">Location</span>
-          <span style="font-size:0.9rem;color:var(--ink)">Bangalore, India</span>
+          <span style="font-size:0.9rem;color:var(--ink)">Lucknow, India</span>
         </li>
       </ul>
     </div>
@@ -761,7 +849,7 @@
 </section>
 
 <footer>
-  <p>Tarush Sharma &nbsp;·&nbsp; 2026</p>
+  <p>Tarush Sharma &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <a href="mailto:tarushsharmalmp@gmail.com" style="color:var(--ink-faint);text-decoration:none">tarushsharmalmp@gmail.com</a> &nbsp;·&nbsp; <a href="https://github.com/tarush-101" target="_blank" style="color:var(--ink-faint);text-decoration:none">GitHub</a></p>
 </footer>
 
 <script>
